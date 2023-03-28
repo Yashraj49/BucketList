@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E507C11A29D2B159005F7044 /* File in Resources */ = {isa = PBXBuildFile; fileRef = E507C11929D2B159005F7044 /* File */; };
 		E58863B229D0261900BAC162 /* BucketListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58863B129D0261900BAC162 /* BucketListApp.swift */; };
 		E58863B429D0261900BAC162 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58863B329D0261900BAC162 /* ContentView.swift */; };
 		E58863B629D0261A00BAC162 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E58863B529D0261A00BAC162 /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E507C11929D2B159005F7044 /* File */ = {isa = PBXFileReference; lastKnownFileType = text; path = File; sourceTree = "<group>"; };
 		E58863AE29D0261900BAC162 /* BucketList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BucketList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E58863B129D0261900BAC162 /* BucketListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketListApp.swift; sourceTree = "<group>"; };
 		E58863B329D0261900BAC162 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -54,6 +56,7 @@
 				E58863B129D0261900BAC162 /* BucketListApp.swift */,
 				E58863B329D0261900BAC162 /* ContentView.swift */,
 				E58863B529D0261A00BAC162 /* Assets.xcassets */,
+				E507C11929D2B159005F7044 /* File */,
 				E58863B729D0261A00BAC162 /* Preview Content */,
 			);
 			path = BucketList;
@@ -127,6 +130,7 @@
 			files = (
 				E58863B929D0261A00BAC162 /* Preview Assets.xcassets in Resources */,
 				E58863B629D0261A00BAC162 /* Assets.xcassets in Resources */,
+				E507C11A29D2B159005F7044 /* File in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,6 +274,7 @@
 				DEVELOPMENT_TEAM = QR233K8R9C;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "we need to unlock your data";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -299,6 +304,7 @@
 				DEVELOPMENT_TEAM = QR233K8R9C;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "we need to unlock your data";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
