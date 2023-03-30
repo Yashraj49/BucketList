@@ -1,9 +1,3 @@
-//
-//  ContentView.swift
-//  BucketList
-//
-//  Created by Yashraj jadhav on 26/03/23.
-//
 import MapKit
 import SwiftUI
 import LocalAuthentication
