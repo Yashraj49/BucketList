@@ -3,18 +3,13 @@ import SwiftUI
 import LocalAuthentication
 
 struct ContentView: View {
-    @State private var selectedPlace: Location?
-    @State private var locations = [Location]()
     @State private var isUnlocked = false
-    @State private var mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 50, longitude: 0), span: MKCoordinateSpan(latitudeDelta: 25, longitudeDelta: 25))
-    
-    
-    
+    @StateObject private var viewModel = ViewModel()
     
     var body: some View {
-        
+        if viewModel.isUnlocked {
         ZStack{
-            Map(coordinateRegion: $mapRegion, annotationItems: locations) { location in
+            Map(coordinateRegion: $viewModel.mapRegion, annotationItems: viewModel.locations) { location in
                 MapAnnotation(coordinate: location.coordinate) {
                     VStack {
                         Image(systemName: "star.circle")
@@ -28,9 +23,9 @@ struct ContentView: View {
                             .fixedSize()
                     }
                     .onTapGesture {
-                      selectedPlace = location
+                        viewModel.selectedPlace = location
                     }
-                 }
+                }
             }
             .ignoresSafeArea()
             Circle()
@@ -41,9 +36,8 @@ struct ContentView: View {
                 Spacer()
                 HStack{
                     Spacer()
-                    Button{
-                        var newLocation = Location(id: UUID(), name: "New Location", description: "", latitude: mapRegion.center.latitude, longitude: mapRegion.center.longitude)
-                        locations.append(newLocation)
+                    Button {
+                        viewModel.addLocation()
                     } label: {
                         Image(systemName: "plus")
                     }
@@ -58,23 +52,32 @@ struct ContentView: View {
                 
             }
             
+            
+            
+            
+            //MARK: - accepts the new location, then looks up where the current location is and replaces it in the array. This will cause our map to update immediately with the new data.
         }
-        .sheet(item: $selectedPlace) {place in
-            Text(place.name)
-            
-             //MARK: - accepts the new location, then looks up where the current location is and replaces it in the array. This will cause our map to update immediately with the new data.
-            
-            EditView(location: place) { newLocation in
-                if let index = locations.firstIndex(of: place) {
-                    locations[index] = newLocation
-                }
+        .sheet(item: $viewModel.selectedPlace) {place in
+            EditView(location: place) {
+                viewModel.update(location: $0)
             }
+            }
+        } else {
+             //button here
+            Button("Unlock Places") {
+                viewModel.authenticate()
+            }
+            .padding()
+            .background(.blue)
+            .foregroundColor(.white)
+            .clipShape(Capsule())
         }
-        
     }
     
 }
-        
+
+
+
 //        func authenticate() {
 //
 //            let context = LAContext()
@@ -100,12 +103,24 @@ struct ContentView: View {
 //            }
 //        }
 
-
-
-
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
