@@ -58,5 +58,6 @@ extension EditView {
             newLocation.description = description
             return newLocation
         }
-    }
+    
+}
 }
