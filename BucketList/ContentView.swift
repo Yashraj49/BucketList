@@ -39,10 +39,10 @@ struct ContentView: View {
                     .frame(width: 32, height: 32)
                 
                 VStack {
-                    Spacer()
+                    Spacer(minLength: .zero)
                     
                     HStack {
-                        Spacer()
+                    
                         
                         Button {
                             viewModel.addLocation()
@@ -57,6 +57,7 @@ struct ContentView: View {
                         }
                         
                     }
+                    .padding(.bottom, 10)
                 }
             } else {
                 Button("Unlock Places") {
@@ -109,10 +110,6 @@ struct ContentView_Previews: PreviewProvider {
         
     }
 }
-
-
-
-
 
 
 
