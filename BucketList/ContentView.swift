@@ -8,7 +8,7 @@ struct ContentView: View {
     @StateObject private var viewModel = ViewModel()
     @State private var showingAuthenticationAlert = false
     @State private var authenticationError = ""
-    @State private var isUnlocked = false
+    @State private var isUnlocked = true
     
     var body: some View {
         ZStack {
@@ -42,22 +42,23 @@ struct ContentView: View {
                     Spacer(minLength: .zero)
                     
                     HStack {
-                    
                         
-                        Button {
-                            viewModel.addLocation()
-                        } label: {
-                            Image(systemName: "plus")
-                                .padding()
-                                .background(.black.opacity(0.75))
-                                .foregroundColor(.white)
-                                .font(.title)
-                                .clipShape(Circle())
-                                .padding(.trailing)
+                        
+                        GeometryReader { geometry in
+                            Button(action: {
+                                viewModel.addLocation()
+                            }, label: {
+                                Image(systemName: "plus")
+                                    .padding()
+                                    .background(.black.opacity(0.75))
+                                    .foregroundColor(.white)
+                                    .font(.title)
+                                    .clipShape(Circle())
+                                    .padding(.trailing)
+                            })
+                            .position(x: geometry.size.height / 2, y : geometry.size.width / 1.2)
                         }
-                        
                     }
-                    .padding(.bottom, 10)
                 }
             } else {
                 Button("Unlock Places") {
@@ -110,6 +111,10 @@ struct ContentView_Previews: PreviewProvider {
         
     }
 }
+
+
+
+
 
 
 
